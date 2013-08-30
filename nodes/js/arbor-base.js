@@ -145,8 +145,6 @@ var Nav
 
             switchSection: function (newSection) {
 
-                console.log(curSection + " " + newSection);
-
             	if(curSection == newSection) return;
 
                 var parent = sys.getEdgesFrom(newSection)[0]
