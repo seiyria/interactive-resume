@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>STAR Report Reader</title>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.nicescroll.js"></script>
+		<script src="js/star.js"></script>
+		<script src="js/content.js"></script>
+
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/jquery-ui-1.10.0.custom.css">
+		<link rel="stylesheet" href="css/style.css">
+
+		<script src="binarystar.js"></script>
+		<script src="incfailstar.js"></script>
+		<script src="tempstar.js"></script>
+
+		<script src="js/init.js"></script>
+
+		<!-- TODO google analytics -->
+		<!-- JS TODO
+
+			MAJ|MAJOR for major?
+	
+		-->
+
+		<!-- CSS TODO
+
+			make portlets fit properly based on the width
+
+		-->
+
+		<!-- IDEA TODO
+
+			gpa calc
+			"you are ready for graduation"
+
+		-->
+	</head>
+	<body>
+
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="brand" href="#">Menu</a>
+					<ul class="nav">
+						<li><a href="#starDialog" data-toggle="modal">New</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid hidden" id="content">
+			<div class="row-fluid">
+				<div class="span3 column-container" id="userInfo">
+					<div class="column">
+
+					  <div class="portlet">
+					    <div class="portlet-header">Your Info</div>
+					    <div class="portlet-content">
+					    	<table class="table table-condensed">
+					    		<tr><td>Name</td>			<td id="main_name">ASDFASDF</td>
+					    		<tr><td>Advisor</td>		<td id="main_advisor">ASDFASDF</td>
+					    		<tr><td>Credits</td>		<td id="main_credits">ASDFASDF</td>
+					    		<tr><td>GPA</td>			<td id="main_gpa">ASDFASDF</td>
+					    		<tr><td>Major</td>			<td id="main_major">ASDFASDF</td>
+					    		<tr><td>Plan</td>			<td id="main_plan">ASDFASDF</td>
+					    		<tr><td>Prepared</td>		<td id="main_prepared">ASDFASDF</td>
+					    		<tr><td>Standing</td>		<td id="main_standing">ASDFASDF</td>
+					    	</table>
+					    </div>
+					  </div>
+					 
+					</div>
+				</div>
+				<div class="span3 column-container" id="genEds">
+					<div class="column">
+					</div>
+				</div>
+
+				<div class="span3 column-container" id="otherEds">
+					<div class="column">
+					</div>
+				</div>
+
+				<div class="span3 column-container" id="degree">
+					<div class="column">
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="navbar navbar-fixed-bottom">
+			<div class="navbar-inner">
+				<div class="container">
+					<ul class="nav">
+						<li><a href="mailto:kempk79@uwosh.edu">Made by Kyle Kemp</a></li>
+						<li class="pull-right"><a><small>*This is not always 100% accurate. Please ask an advisor if you have concerns. Additionally, I do not retain any of this data.</small></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div id="starDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="StarReport" aria-hidden="true">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+				<h3 id="header">Format a STAR Report</h3>
+			</div>
+
+			<div class="modal-body">
+				Paste your STAR report here:
+				<textarea id="starField" rows="18"></textarea>
+			</div>
+
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+				<button class="btn btn-primary" id="formatButton">Format</button>
+			</div>
+
+		</div>
+
+	</body>
+</html>
