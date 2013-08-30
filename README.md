@@ -13,6 +13,8 @@ purple
 ======
 My first idea of what would be kinda "neat" (and also the most recent version I had). It uses tiles and some sliding effects to display content, though it renders poorly on mobile. 
 
+It houses the Cards Against Humanity searcher, Starship Oriam, and the STAR report reader for peoplesoft systems.
+
 Scrapped as of September 2013.
 
 nodes
