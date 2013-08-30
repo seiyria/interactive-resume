@@ -49,7 +49,7 @@ var NodeMaster = {
 					"node.js":			{color:CLR.doc,  alpha: 0, isLeaf: true, link: "http://nodejs.org/"},
 
 				"python":				{color:CLR.code, shape: "dot", alpha: 0},
-					"sublime text":		{color:CLR.doc,  alpha: 0, isLeaf: true, link: "http://www.sublimetext.com/"},
+					"sublime text plugin":		{color:CLR.doc,  alpha: 0, isLeaf: true, link: "http://www.sublimetext.com/"},
 					"web2py": 			{color:CLR.doc,  alpha: 0, isLeaf: true, link: "http://lesscss.org/"},
 
 				"php":					{color:CLR.code, shape: "dot", alpha: 0},
@@ -176,7 +176,7 @@ var NodeMaster = {
 		},
 
 		"python": {
-			"sublime text":			{length: 4},
+			"sublime text plugin":	{length: 4},
 			"web2py": 				{length: 3},
 		},
 
