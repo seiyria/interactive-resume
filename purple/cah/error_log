@@ -1,0 +1,3 @@
+[31-Jul-2013 17:00:23 America/Chicago] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'seiyriac'@'localhost' (using password: YES) in /home/seiyriac/public_html/cah/cards.php on line 5
+[31-Jul-2013 17:00:23 America/Chicago] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/seiyriac/public_html/cah/cards.php on line 7
+[31-Jul-2013 17:00:23 America/Chicago] PHP Fatal error:  Call to a member function fetch_object() on a non-object in /home/seiyriac/public_html/cah/cards.php on line 9
