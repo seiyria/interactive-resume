@@ -145,6 +145,8 @@ var Nav
 
             switchSection: function (newSection) {
 
+                console.log(curSection + " " + newSection);
+
             	if(curSection == newSection) return;
 
                 var parent = sys.getEdgesFrom(newSection)[0]
@@ -157,6 +159,10 @@ var Nav
                 var children = $.map(sys.getEdgesFrom(newSection), function (edge) {
                     return edge.target
                 })
+
+                if(children.length == 0) return;
+
+                curSection = newSection;
 
                 sys.eachNode(function (node) {
                 	if(node.data.alwaysVisible) return;
