@@ -28,10 +28,9 @@ var NodeMaster = {
 			"r\u00E9sum\u00E9":			{color:CLR.demo, shape: "dot", alpha:1, alwaysVisible: true},
 
 				"c#": 					{color:CLR.code, shape: "dot", alpha: 0},
-					"mvc": 				{color:CLR.doc,  alpha: 0, isLeaf: true},
-					"webforms": 		{color:CLR.doc,  alpha: 0, isLeaf: true},
-					"webapi": 			{color:CLR.doc,  alpha: 0, isLeaf: true},
-					"xna": 				{color:CLR.doc,  alpha: 0, isLeaf: true},
+					"mvc": 				{color:CLR.doc,  alpha: 0, isLeaf: true, link: "http://www.asp.net/mvc"},
+					"webapi": 			{color:CLR.doc,  alpha: 0, isLeaf: true, link: "http://www.asp.net/web-api"},
+					"xna": 				{color:CLR.doc,  alpha: 0, isLeaf: true, link: "http://en.wikipedia.org/wiki/Microsoft_XNA"},
 
 				"java": 				{color:CLR.code, shape: "dot", alpha: 0},
 					"pircbotx": 		{color:CLR.doc,  alpha: 0, isLeaf: true, link: "https://code.google.com/p/pircbotx/"},
@@ -47,6 +46,7 @@ var NodeMaster = {
 					"arbor.js":			{color:CLR.doc,  alpha: 0, isLeaf: true, link: "http://arborjs.org/"},
 					"google apps":		{color:CLR.doc,  alpha: 0, isLeaf: true, link: "https://developers.google.com/apps-script/"},
 					"node.js":			{color:CLR.doc,  alpha: 0, isLeaf: true, link: "http://nodejs.org/"},
+					"html5 canvas":		{color:CLR.doc,  alpha: 0, isLeaf: true, link: "https://developer.mozilla.org/en-US/docs/HTML/Canvas"},
 
 				"python":				{color:CLR.code, shape: "dot", alpha: 0},
 					"sublime text plugin":		{color:CLR.doc,  alpha: 0, isLeaf: true, link: "http://www.sublimetext.com/"},
@@ -79,8 +79,9 @@ var NodeMaster = {
 					"notepad++": 		{color:CLR.doc,  alpha: 0, isLeaf: true, link: "http://notepad-plus-plus.org/"},
 
 				"scripting":			{color:CLR.code, shape: "dot", alpha: 0},
-					"bash": 			{color:CLR.doc,  alpha: 0, isLeaf: true},
-					"batch": 			{color:CLR.doc,  alpha: 0, isLeaf: true},
+					"bash": 			{color:CLR.doc,  alpha: 0, isLeaf: true, link: "http://en.wikipedia.org/wiki/Bash_(Unix_shell)"},
+					"batch": 			{color:CLR.doc,  alpha: 0, isLeaf: true, link: "http://en.wikipedia.org/wiki/Batch_file"},
+					"powershell":		{color:CLR.doc,  alpha: 0, isLeaf: true, link: "http://en.wikipedia.org/wiki/Windows_PowerShell"},
 
 			projects: 					{color:CLR.demo, shape: "dot", alpha:1, alwaysVisible: true},
 				"vivio": 				{color:CLR.doc,  alpha: 0, isLeaf: true, link: "https://github.com/seiyria/vivio"},
@@ -141,7 +142,6 @@ var NodeMaster = {
 
 		"c#": {
 			"mvc": 					{length: 5.8},
-			"webforms": 			{length: 4.9},
 			"webapi": 				{length: 4.5},
 			"xna": 					{length: 4.0},
 		},
@@ -173,6 +173,7 @@ var NodeMaster = {
 			"arbor.js":				{length: 4.2},
 			"google apps":			{length: 3.9},
 			"node.js":				{length: 5.1},
+			"html5 canvas":			{length: 5.6},
 		},
 
 		"python": {
