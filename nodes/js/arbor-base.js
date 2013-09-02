@@ -97,6 +97,18 @@ var Nav
                         })
                     }
                 })
+                gfx.text("\u24B8 Kyle Kemp, 2013", canvas.width-70, canvas.height-25, {
+                    color: "black",
+                    align: "center",
+                    font: "Arial",
+                    size: 12
+                })
+                gfx.text("created with arbor.js", canvas.width-70, canvas.height-10, {
+                    color: "black",
+                    align: "center",
+                    font: "Arial",
+                    size: 12
+                })
                 that._drawVignette()
             },
 
