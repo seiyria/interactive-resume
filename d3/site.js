@@ -1,12 +1,7 @@
 
 // more visible nodes should increase the charge or the link distance
-// 
+
 (function() {
-  function redraw() {
-  svg.attr("transform",
-      "translate(" + d3.event.translate + ")"
-      + " scale(" + d3.event.scale + ")");
-}
 
 var width = window.innerWidth,
     height = window.innerHeight,
@@ -14,9 +9,18 @@ var width = window.innerWidth,
 
 var defaultSize = 25;
 
+function redraw() {
+svg.attr("transform",
+    "translate(" + d3.event.translate + ")"
+    + " scale(" + d3.event.scale + ")");
+}
+
 var force = d3.layout.force()
-    .linkDistance(140)
-    .charge(-80)
+    .linkDistance(function(d) { 
+      return d.target._children ? d.target._children.length * 30 : 
+              d.target.children ? d.target.children.length * 30 :
+                80})
+    .charge(-200)
     .gravity(.05)
     .size([width, height])
     .on("tick", tick);
