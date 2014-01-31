@@ -19,9 +19,11 @@ var force = d3.layout.force()
     .linkDistance(function(d) { 
       return d.target._children ? d.target._children.length * 30 : 
               d.target.children ? d.target.children.length * 30 :
-                80})
-    .charge(-200)
+                60})
+    .charge(-400)
     .gravity(.05)
+    .friction(0.45)
+    .linkStrength(0.6)
     .size([width, height])
     .on("tick", tick);
 
