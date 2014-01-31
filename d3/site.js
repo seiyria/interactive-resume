@@ -1,181 +1,193 @@
 
-// more visible nodes should increase the charge or the link distance
-
 (function() {
 
-var width = window.innerWidth,
-    height = window.innerHeight,
-    root;
+	//just some constants!
+	var width = window.innerWidth;
+	var height = window.innerHeight;
+	var root;
 
-var defaultSize = 25;
+	//default node size
+	var defaultSize = 25;
 
-var colors = {
-  collapsed: "#5850ff",
-  expanded: "#392410",
-  leaf: "#0272c3"
-};
+	//colors! it looks great as a background
+	var colors = {
+		collapsed: "#5850ff",
+		expanded: "#392410",
+		leaf: "#0272c3"
+	};
 
-function redraw() {
-  svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
-}
+	// generate dat force layout. lots of numbers that do things I don't understand!
+	var force = d3.layout.force()
+		.linkDistance(function(d) { 
+			return d.target._children ? d.target._children.length * 30 : 
+				d.target.children ? d.target.children.length * 30 :
+				60;
+		})
+		.charge(-400)
+		.gravity(0.05)
+		.friction(0.45)
+		.linkStrength(0.6)
+		.size([width, height])
+		.on("tick", tick);
 
-var force = d3.layout.force()
-    .linkDistance(function(d) { 
-      return d.target._children ? d.target._children.length * 30 : 
-              d.target.children ? d.target.children.length * 30 :
-                60})
-    .charge(-400)
-    .gravity(.05)
-    .friction(0.45)
-    .linkStrength(0.6)
-    .size([width, height])
-    .on("tick", tick);
+	// makin' an svg to contain everythin'
+	var svg = d3.select("body").append("svg")
+		.attr("width", width)
+		.attr("height", height)
+		.attr("viewBox", "0 0 " + width + " " + height)
+		.attr("preserveAspectRatio", "xMidYMid meet")
+		.attr("pointer-events", "all");
 
-var svg = d3.select("body").append("svg")
-      .attr({
-        "width": "100%",
-        "height": "100%"
-      })
-      .attr("viewBox", "0 0 " + width + " " + height )
-      .attr("preserveAspectRatio", "xMidYMid meet")
-      .attr("pointer-events", "all")
-    .call(d3.behavior.zoom().on("zoom", redraw));
+	var link = svg.selectAll(".link");
+	var node = svg.selectAll(".node");
 
-var link = svg.selectAll(".link"),
-    node = svg.selectAll(".node");
+	// toggle everything! duh.
+	function toggleAll(d) {
+		if(!d.children) return;
+		d.children.forEach(toggleAll); 
+		toggle(d);
+	}
 
-var toggleRec = function toggleAll(d) {
-  if(!d.children) return;
-  d.children.forEach(toggleAll); 
-  toggle(d);
-}
+	// update all of the nodes that exist
+	function update() {
+		var nodes = flatten(root);
+		var links = d3.layout.tree().links(nodes);
 
-d3.json("resume.json", function(error, json) {
-  root = json;
-  root.y0 = height / 2;
-  root.x0 = width / 2;
+		force
+			.nodes(nodes)
+			.links(links)
+			.start();
 
-  //I hate things sometimes
-  update();
-  toggleRec(root);
-  toggle(root);
-  update();
-});
+		link = link.data(links, function(d) { return d.target.id; });
 
-function update() {
-  var nodes = flatten(root);
-  var links = d3.layout.tree().links(nodes);
+		link.exit().remove();
 
-  force
-      .nodes(nodes)
-      .links(links)
-      .start();
+		link.enter().insert("line", ".node")
+			.attr("class", "link");
 
-  link = link.data(links, function(d) { return d.target.id; });
+		node = node.data(nodes, function(d) { return d.id; });
 
-  link.exit().remove();
+		node.exit().remove();
 
-  link.enter().insert("line", ".node")
-      .attr("class", "link");
+		var nodeEnter = node.enter().append("g")
+			.attr("class", "node")
+			.on("click", click)
+			.call(force.drag);
 
-  node = node.data(nodes, function(d) { return d.id; });
+		nodeEnter.append("circle")
+			.attr("r", function(d) { return d.size || defaultSize; });
 
-  node.exit().remove();
+		nodeEnter.append("text")
+			.attr("dy", ".35em")
+			.attr("fill", "#fff")
+			.attr("text-decoration", function(d) { return d.link ? "underline" : ""; })
+			.text(function(d) { return d.name; });
 
-  var nodeEnter = node.enter().append("g")
-      .attr("class", "node")
-      .on("click", click)
-      .call(force.drag);
+		node.select("circle")
+			.style("fill", color);
+	}
 
-  nodeEnter.append("circle")
-      .attr("r", function(d) { return d.size || defaultSize; });
+	// update stuff every tick!
+	function tick() {
+		link.attr("x1", function(d) { return d.source.x; })
+			.attr("y1", function(d) { return d.source.y; })
+			.attr("x2", function(d) { return d.target.x; })
+			.attr("y2", function(d) { return d.target.y; });
 
-  nodeEnter.append("text")
-      .attr("dy", ".35em")
-      .attr("fill", "#fff")
-      .attr("text-decoration", function(d) { return d.link ? "underline" : ""})
-      .text(function(d) { return d.name; });
+		node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+	}
 
-  node.select("circle")
-      .style("fill", color);
-}
+	// determine an adequate color
+	function color(d) {
+		return d._children ? colors.collapsed
+			: d.children ? colors.expanded
+			: colors.leaf;
+	}
 
-function tick() {
-  link.attr("x1", function(d) { return d.source.x; })
-      .attr("y1", function(d) { return d.source.y; })
-      .attr("x2", function(d) { return d.target.x; })
-      .attr("y2", function(d) { return d.target.y; });
+	// recursively close all of my children!
+	function closeChildren(sibling, node) {
+		node.children.forEach(function(e) {
+			if(typeof e.children !== 'undefined' && e!==sibling && !e._children) {
+				e._children = e.children;
+				closeChildren(null, e);
+				e.children = null;
+			}
+		});
+	}
 
-  node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-}
+	// toggle a particular childrens visibility
+	function toggle(d) {
 
-function color(d) {
-  return d._children ? colors.collapsed
-      : d.children ? colors.expanded
-      : colors.leaf
-}
+		//hide children
+		if (d.children) {
+			d._children = d.children;
+			
+			//close my children, because otherwise inconsistency!
+			closeChildren(null, d);
+			d.children = null;
 
-function closeChildren(sibling, node) {
-  node.children.forEach(function(e, i) {
-    if(typeof e.children !== 'undefined' && e!==sibling && !e._children) {
-      e._children = e.children
-      closeChildren(null, e);
-      e.children = null;
-    }
-  });
-}
+		//show children
+		} else {
+			d.children = d._children;
+			d._children = null;
 
-function toggle(d) {
-  if (d.children) {
-    d._children = d.children;
-    d.children = null;
+			//if this variable hasn't been set ... set it
+			if(typeof d.canBeClosedBySiblings === 'undefined') {
+				d.children.forEach(function(e) {
+					e.parent = d;
+					d.canBeClosedBySiblings = !e.children && !e._children;
+				});
+			}
 
-  } else {
-    d.children = d._children;
-    d._children = null;
+			//close children of the parent node but myself
+			if(d.parent && d.parent.children) {
+				closeChildren(d, d.parent);
+			} 
+		}
+	}
 
-    if(typeof d.canBeClosedBySiblings === 'undefined') {
-      d.children.forEach(function(e, i) {
-        e.parent = d;
-        d.canBeClosedBySiblings = !e.children && !e._children;
-      });
-    }
+	// toggle visibility of nodes / children when clicked
+	function click(d) {
+		if (d3.event.defaultPrevented) return;
+		if (d.link) {
+			window.open(d.link, '_blank');
+		}
+		toggle(d);
+		update();
+	}
 
-    if(d.parent && d.parent.children) {
-      closeChildren(d, d.parent);
-    }
-  }
-}
+	// condense the nodes down to one array
+	function flatten(root) {
+		var nodes = [], i = 0;
 
-function click(d) {
-  if (d3.event.defaultPrevented) return;
-  if (d.link) {
-    window.open(d.link, '_blank');
-  }
-  toggle(d);
-  update();
-}
+		function recurse(node) {
+			if (node.children) node.children.forEach(recurse);
+			if (!node.id) node.id = ++i;
+			nodes.push(node);
+		}
 
-// Returns a list of all nodes under the root.
-function flatten(root) {
-  var nodes = [], i = 0;
+		recurse(root);
+		return nodes;
+	}
 
-  function recurse(node) {
-    if (node.children) node.children.forEach(recurse);
-    if (!node.id) node.id = ++i;
-    nodes.push(node);
-  }
+	//update the svg size when the window resizes
+	function updateWindow(){
+		svg.attr("width", window.innerWidth).attr("height", window.innerHeight);
+	}
 
-  recurse(root);
-  return nodes;
-}
+	window.onresize = updateWindow;
 
-function updateWindow(){
-    x = w.innerWidth || e.clientWidth || g.clientWidth;
-    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+	// load my resume!
+	d3.json("resume.json", function(error, json) {
+		root = json;
+		root.y0 = height / 2;
+		root.x0 = width / 2;
 
-    svg.attr("width", x).attr("height", y);
-}
-window.onresize = updateWindow;
+		//I hate things sometimes
+		update();
+		toggleAll(root);
+		toggle(root);
+		update();
+	});
 
 })();

@@ -5,7 +5,7 @@
 }
 
 .node text {
-  font: 12px sans-serif;
+  font: 13px Arial;
   pointer-events: none;
   text-anchor: middle;
 }
@@ -23,4 +23,5 @@ svg {
 
 body {
 	background-color: rgb(11, 33, 41);
+	overflow: hidden;
 }
