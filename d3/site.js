@@ -9,10 +9,14 @@ var width = window.innerWidth,
 
 var defaultSize = 25;
 
+var colors = {
+  collapsed: "#5850ff",
+  expanded: "#392410",
+  leaf: "#0272c3"
+};
+
 function redraw() {
-svg.attr("transform",
-    "translate(" + d3.event.translate + ")"
-    + " scale(" + d3.event.scale + ")");
+  svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
 }
 
 var force = d3.layout.force()
@@ -88,6 +92,8 @@ function update() {
 
   nodeEnter.append("text")
       .attr("dy", ".35em")
+      .attr("fill", "#fff")
+      .attr("text-decoration", function(d) { return d.link ? "underline" : ""})
       .text(function(d) { return d.name; });
 
   node.select("circle")
@@ -104,24 +110,45 @@ function tick() {
 }
 
 function color(d) {
-  return d._children ? "#a7af00" // collapsed package
-      : d.children ? "#c6dbef" // expanded package
-      : "#fd8d3c"; // leaf node
+  return d._children ? colors.collapsed
+      : d.children ? colors.expanded
+      : colors.leaf
+}
+
+function closeChildren(sibling, node) {
+  node.children.forEach(function(e, i) {
+    if(typeof e.children !== 'undefined' && e!==sibling && !e._children) {
+      e._children = e.children
+      closeChildren(null, e);
+      e.children = null;
+    }
+  });
 }
 
 function toggle(d) {
   if (d.children) {
     d._children = d.children;
     d.children = null;
+
   } else {
     d.children = d._children;
     d._children = null;
+
+    if(typeof d.canBeClosedBySiblings === 'undefined') {
+      d.children.forEach(function(e, i) {
+        e.parent = d;
+        d.canBeClosedBySiblings = !e.children && !e._children;
+      });
+    }
+
+    if(d.parent && d.parent.children) {
+      closeChildren(d, d.parent);
+    }
   }
 }
 
-// Toggle children on click.
 function click(d) {
-  if (d3.event.defaultPrevented) return; // ignore drag
+  if (d3.event.defaultPrevented) return;
   if (d.link) {
     window.open(d.link, '_blank');
   }
@@ -142,4 +169,13 @@ function flatten(root) {
   recurse(root);
   return nodes;
 }
+
+function updateWindow(){
+    x = w.innerWidth || e.clientWidth || g.clientWidth;
+    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
+    svg.attr("width", x).attr("height", y);
+}
+window.onresize = updateWindow;
+
 })();
