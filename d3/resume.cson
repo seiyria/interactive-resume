@@ -18,6 +18,8 @@
     "name": "rock climbing"
   ,
     "name": "wire flowers"
+  ,
+    "name": "wicked web wizardry"
   ]
 ,
   "name": "contact",
@@ -183,5 +185,8 @@
   ,
     "name": "tekdice"
     "link": "https://github.com/tekdice/monster-mixer"
+  ,
+    "name": "chartalog"
+    "link": "http://chartalog.com"
   ]
 ]
