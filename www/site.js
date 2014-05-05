@@ -19,8 +19,8 @@
 	// generate dat force layout. lots of numbers that do things I don't understand!
 	var force = d3.layout.force()
 		.linkDistance(function(d) { 
-			return d.target._children ? d.target._children.length * 30 : 
-				d.target.children ? d.target.children.length * 30 :
+			return d.target._children ? d.target._children.length * 50 : 
+				d.target.children ? d.target.children.length * 50 :
 				60;
 		})
 		.charge(-400)
@@ -132,7 +132,7 @@
 			d._children = null;
 
 			//if this variable hasn't been set ... set it
-			if(typeof d.canBeClosedBySiblings === 'undefined') {
+			if(typeof d.canBeClosedBySiblings === 'undefined' && d.children) {
 				d.children.forEach(function(e) {
 					e.parent = d;
 					d.canBeClosedBySiblings = !e.children && !e._children;
