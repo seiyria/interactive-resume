@@ -53,6 +53,8 @@
     "children": [
       "name": "jenkins"
     ,
+      "name": "gitlab-ci"
+    ,
       "name": "teamcity"
     ,
       "name": "travis-ci"
@@ -74,6 +76,8 @@
       "name": "sublime text"
     ,
       "name": "visual studio"
+    ,
+      "name": "webstorm"
     ]
   ,
     "name": "html"
@@ -91,6 +95,8 @@
   ,
     "name": "javascript",
     "children": [
+      "name": "angularjs"
+    ,
       "name": "bower"
     ,
       "name": "casperjs"
@@ -98,8 +104,6 @@
       "name": "coffeescript"
     ,
       "name": "d3.js"
-    ,
-      "name": "google apps"
     ,
       "name": "grunt"
     ,
@@ -112,6 +116,8 @@
       "name": "nodejs"
     ,
       "name": "phantomjs"
+    ,
+      "name": "phaser"
     ,
       "name": "twitter bootstrap"
     ]
@@ -136,7 +142,7 @@
       "name": "powershell"
     ]
   ,
-    "name": "sql"
+    "name": "no/sql"
     "children": [
       "name": "mysql"
     ,
@@ -175,6 +181,12 @@
     "name": "bootstrap-slider"
     "link": "https://github.com/seiyria/bootstrap-slider"
   ,
+    "name": "doks"
+    "link": "https://github.com/kellyirc/doks"
+  ,
+    "name": "idlelands"
+    "link": "https://github.com/IdleLands"
+  ,
     "name": "jsmegahal"
     "link": "https://github.com/seiyria/jsmegahal"
   ,
@@ -186,8 +198,5 @@
   ,
     "name": "tekdice"
     "link": "https://github.com/tekdice/monster-mixer"
-  ,
-    "name": "chartalog"
-    "link": "http://chartalog.com"
   ]
 ]
