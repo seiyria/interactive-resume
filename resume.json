@@ -1,0 +1,318 @@
+{
+  "name": "kyle j. kemp",
+  "size": 50,
+  "children": [
+    {
+      "name": "about",
+      "children": [
+        {
+          "name": "21"
+        },
+        {
+          "name": "game designer"
+        },
+        {
+          "name": "irc-aholic"
+        },
+        {
+          "name": "oshkosh, wi"
+        },
+        {
+          "name": "uw oshkosh"
+        },
+        {
+          "name": "software engineer"
+        },
+        {
+          "name": "rock climbing"
+        },
+        {
+          "name": "wire flowers"
+        },
+        {
+          "name": "wicked web wizardry",
+          "link": "http://wickedwebwizardry.com"
+        }
+      ]
+    },
+    {
+      "name": "contact",
+      "children": [
+        {
+          "name": "email",
+          "link": "mailto: kyle@seiyria.com"
+        },
+        {
+          "name": "github",
+          "link": "https://github.com/seiyria"
+        },
+        {
+          "name": "linkedin",
+          "link": "http://www.linkedin.com/in/seiyria"
+        },
+        {
+          "name": "twitter",
+          "link": "https://twitter.com/seiyria"
+        }
+      ]
+    },
+    {
+      "name": "résumé",
+      "link": "http://seiyria.com/resume.pdf"
+    },
+    {
+      "name": "skills",
+      "children": [
+        {
+          "name": "c#",
+          "children": [
+            {
+              "name": "mvc"
+            },
+            {
+              "name": "webapi"
+            },
+            {
+              "name": "xna"
+            }
+          ]
+        },
+        {
+          "name": "ci",
+          "children": [
+            {
+              "name": "jenkins"
+            },
+            {
+              "name": "gitlab-ci"
+            },
+            {
+              "name": "teamcity"
+            },
+            {
+              "name": "travis-ci"
+            }
+          ]
+        },
+        {
+          "name": "css",
+          "children": [
+            {
+              "name": "bootstrap"
+            },
+            {
+              "name": "less"
+            }
+          ]
+        },
+        {
+          "name": "editors",
+          "children": [
+            {
+              "name": "chrome"
+            },
+            {
+              "name": "eclipse"
+            },
+            {
+              "name": "sublime text"
+            },
+            {
+              "name": "vim"
+            },
+            {
+              "name": "visual studio"
+            },
+            {
+              "name": "webstorm"
+            }
+          ]
+        },
+        {
+          "name": "html",
+          "children": [
+            {
+              "name": "less"
+            }
+          ]
+        },
+        {
+          "name": "java",
+          "children": [
+            {
+              "name": "android"
+            },
+            {
+              "name": "ant"
+            },
+            {
+              "name": "pircbotx"
+            },
+            {
+              "name": "project lombok"
+            }
+          ]
+        },
+        {
+          "name": "javascript",
+          "children": [
+            {
+              "name": "angularjs"
+            },
+            {
+              "name": "bootstrap"
+            },
+            {
+              "name": "bower"
+            },
+            {
+              "name": "casperjs"
+            },
+            {
+              "name": "coffeescript"
+            },
+            {
+              "name": "d3.js"
+            },
+            {
+              "name": "express"
+            },
+            {
+              "name": "grunt"
+            },
+            {
+              "name": "gulp"
+            },
+            {
+              "name": "jquery"
+            },
+            {
+              "name": "knockout.js"
+            },
+            {
+              "name": "nodejs / iojs"
+            },
+            {
+              "name": "phantomjs"
+            },
+            {
+              "name": "phaser"
+            }
+          ]
+        },
+        {
+          "name": "latex"
+        },
+        {
+          "name": "php"
+        },
+        {
+          "name": "python",
+          "children": [
+            {
+              "name": "sublime text plugins"
+            },
+            {
+              "name": "web2py"
+            }
+          ]
+        },
+        {
+          "name": "shell",
+          "children": [
+            {
+              "name": "bash"
+            },
+            {
+              "name": "batch"
+            },
+            {
+              "name": "powershell"
+            }
+          ]
+        },
+        {
+          "name": "no/sql",
+          "children": [
+            {
+              "name": "mysql / mariadb"
+            },
+            {
+              "name": "mongodb"
+            },
+            {
+              "name": "mssql"
+            },
+            {
+              "name": "sqlite"
+            }
+          ]
+        },
+        {
+          "name": "testing",
+          "children": [
+            {
+              "name": "chai"
+            },
+            {
+              "name": "jasmine"
+            },
+            {
+              "name": "karma"
+            },
+            {
+              "name": "mocha"
+            }
+          ]
+        },
+        {
+          "name": "vcs",
+          "children": [
+            {
+              "name": "hg"
+            },
+            {
+              "name": "git"
+            },
+            {
+              "name": "svn"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "projects",
+      "children": [
+        {
+          "name": "bootstrap-slider",
+          "link": "https://github.com/seiyria/bootstrap-slider"
+        },
+        {
+          "name": "doks",
+          "link": "https://github.com/kellyirc/doks"
+        },
+        {
+          "name": "idlelands",
+          "link": "https://github.com/IdleLands"
+        },
+        {
+          "name": "jsmegahal",
+          "link": "https://github.com/seiyria/jsmegahal"
+        },
+        {
+          "name": "kurea",
+          "link": "https://github.com/kellyirc/kurea"
+        },
+        {
+          "name": "sublime dreams",
+          "link": "https://github.com/seiyria/sublime-dreams"
+        },
+        {
+          "name": "tekdice",
+          "link": "https://github.com/tekdice/monster-mixer"
+        }
+      ]
+    }
+  ]
+}
