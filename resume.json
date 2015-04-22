@@ -132,7 +132,7 @@
           "name": "html",
           "children": [
             {
-              "name": "less"
+              "name": "jade"
             }
           ]
         },
