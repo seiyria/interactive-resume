@@ -3,7 +3,7 @@
 "children": [
   "name": "about",
   "children": [
-    "name": "21"
+    "name": "22"
   ,
     "name": "game designer"
   ,
@@ -39,6 +39,9 @@
   ]
 ,
   "name": "r\u00E9sum\u00E9",
+  "link": "http://seiyria.com/resume.pdf"
+,
+  "name": "skills",
   "children": [
     "name": "c#",
     "children": [
@@ -62,18 +65,20 @@
   ,
     "name": "css"
     "children": [
-      "name": "less"
+      "name": "bootstrap"
     ,
-      "name": "twitter bootstrap"
+      "name": "less"
     ]
   ,
     "name": "editors"
     "children": [
+      "name": "chrome"
+    ,
       "name": "eclipse"
     ,
-      "name": "notepad++"
-    ,
       "name": "sublime text"
+    ,
+      "name": "vim"
     ,
       "name": "visual studio"
     ,
@@ -81,6 +86,9 @@
     ]
   ,
     "name": "html"
+    "children": [
+      "name": "jade"
+    ]
   ,
     "name": "java",
     "children": [
@@ -97,6 +105,8 @@
     "children": [
       "name": "angularjs"
     ,
+      "name": "bootstrap"
+    ,
       "name": "bower"
     ,
       "name": "casperjs"
@@ -105,21 +115,21 @@
     ,
       "name": "d3.js"
     ,
+      "name": "express"
+    ,
       "name": "grunt"
     ,
-      "name": "html5 canvas"
+      "name": "gulp"
     ,
       "name": "jquery"
     ,
       "name": "knockout.js"
     ,
-      "name": "nodejs"
+      "name": "nodejs / iojs"
     ,
       "name": "phantomjs"
     ,
       "name": "phaser"
-    ,
-      "name": "twitter bootstrap"
     ]
   ,
     "name": "latex"
@@ -144,26 +154,24 @@
   ,
     "name": "no/sql"
     "children": [
-      "name": "mysql"
+      "name": "mysql / mariadb"
     ,
       "name": "mongodb"
     ,
       "name": "mssql"
     ,
-      "name": "derby"
-    ,
       "name": "sqlite"
     ]
   ,
-    "name": "test"
+    "name": "testing"
     "children": [
       "name": "chai"
     ,
+      "name": "jasmine"
+    ,
+      "name": "karma"
+    ,
       "name": "mocha"
-    ,
-      "name": "nunit"
-    ,
-      "name": "junit"
     ]
   ,
     "name": "vcs"
@@ -180,6 +188,9 @@
   "children": [
     "name": "bootstrap-slider"
     "link": "https://github.com/seiyria/bootstrap-slider"
+  ,
+    "name": "c"
+    "link": "https://github.com/seiyria/c"
   ,
     "name": "doks"
     "link": "https://github.com/kellyirc/doks"
