@@ -3,7 +3,7 @@
 "children": [
   "name": "about",
   "children": [
-    "name": "21"
+    "name": "22"
   ,
     "name": "game designer"
   ,
@@ -188,6 +188,9 @@
   "children": [
     "name": "bootstrap-slider"
     "link": "https://github.com/seiyria/bootstrap-slider"
+  ,
+    "name": "c"
+    "link": "https://github.com/seiyria/c"
   ,
     "name": "doks"
     "link": "https://github.com/kellyirc/doks"
